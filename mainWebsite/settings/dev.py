@@ -45,7 +45,7 @@ DEBUG_TOOLBAR_PANELS = [
     "debug_toolbar.panels.redirects.RedirectsPanel",
     "debug_toolbar.panels.profiling.ProfilingPanel",
     "debug_toolbar.panels.versions.VersionsPanel",
-    "djdt_flamegraph.FlamegraphPanel",
+    # "djdt_flamegraph.FlamegraphPanel",
 ]
 
 
