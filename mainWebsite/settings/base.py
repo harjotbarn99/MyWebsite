@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # mine
-    "boilerplate.core"
+    "mainWebsite.core"
     # third party
 ]
 
@@ -31,7 +31,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "boilerplate.urls"
+ROOT_URLCONF = "mainWebsite.urls"
 
 TEMPLATES = [
     {
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "boilerplate.wsgi.application"
+WSGI_APPLICATION = "mainWebsite.wsgi.application"
 
 
 # Password validation
