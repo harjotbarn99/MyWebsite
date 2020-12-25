@@ -5,7 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 django-debug-toolbar = "*"
-djdt-flamegraph = "*"
 django-mail-panel = "*"
 
 [packages]
@@ -13,9 +12,9 @@ asgiref = "==3.2.10"
 pytz = "==2020.1"
 sqlparse = "==0.3.1"
 Django = "==3.0.8"
-Pillow = "==7.2.0"
 gunicorn = "*"
-django-heroku="*"
+pillow = "*"
+psycopg2 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
