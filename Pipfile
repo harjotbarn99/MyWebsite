@@ -15,6 +15,7 @@ sqlparse = "==0.3.1"
 Django = "==3.0.8"
 Pillow = "==7.2.0"
 gunicorn = "*"
+django-heroku="*"
 
 [requires]
 python_version = "3.8"
