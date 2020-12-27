@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # mine
     "mainWebsite.core"
+    "apps.home"
     # third party
 ]
 

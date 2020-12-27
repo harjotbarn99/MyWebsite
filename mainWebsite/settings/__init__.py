@@ -14,4 +14,3 @@ if (os.environ.get("PRODUCTION") == "False"):
 else:
     print("this is production------------------------------------------- ")
     from .prod import *
-# from .prod import *

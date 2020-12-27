@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .core.views import default_view, DefaultView
 
-urlpatterns = [path("admin/", admin.site.urls), path("", DefaultView.as_view())]
+urlpatterns = [path("admin/", admin.site.urls), path("", include("apps.home"))]
 
 # remove this
 
