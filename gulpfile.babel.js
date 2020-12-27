@@ -30,6 +30,7 @@ const PATHS = {
     images: path.join(_STATIC, 'src', 'img'),
     scripts: path.join(_STATIC, 'src', 'js'),
     styles: path.join(_STATIC, 'src', 'scss'),
+    stylesCss: path.join(_STATIC, 'src', 'css'),
     other: [
       path.join(_STATIC, 'src', '**', '*'),
       '!' + path.join(_STATIC, 'src', '{img,js,lib,scss}'),
@@ -99,6 +100,17 @@ function sassCompile() {
     .pipe(browserSync.stream());
 }
 
+function cssStyles(){
+  return gulp
+    .src(path.join(PATHS.src.stylesCss, '**', '*'))
+    .pipe(gulpif(!PRODUCTION, sourceMaps.init()))
+    .pipe(autoprefixer())
+    .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: 'ie9' })))
+    .pipe(gulpif(!PRODUCTION, sourceMaps.write()))
+    .pipe(gulp.dest(PATHS.dest.styles))
+    .pipe(browserSync.stream());
+}
+
 function images() {
   return gulp
     .src(path.join(PATHS.src.images, '**', '*'))
@@ -134,12 +146,13 @@ function watchChanges() {
   gulp
     .watch(path.join(PATHS.src.scripts, '**', '*'))
     .on('all', gulp.series(scripts, browserSync.reload));
-  gulp.watch(path.join(PATHS.src.styles, '**', '*')).on('all', sassCompile);
+  gulp.watch(path.join(PATHS.src.styles, '**', '*')).on('all', gulp.series(sassCompile,browserSync.reload));
+  gulp.watch(path.join(PATHS.src.stylesCss, '**', '*')).on('all', gulp.series(cssStyles,browserSync.reload));
 }
 
 gulp.task(
   'build',
-  gulp.series(cleanDist, gulp.parallel(scripts, sassCompile, others, images))
+  gulp.series(cleanDist, gulp.parallel(scripts, sassCompile, others,cssStyles ,images))
 );
 
 gulp.task('watch', gulp.series('build', browserSyncServer, watchChanges));
