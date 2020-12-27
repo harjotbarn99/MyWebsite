@@ -1,3 +1,2 @@
-web: gunicorn mainWebsite.wsgi
-web: node install
-web: node run build
+release: node install && node run build && python manage.py migrate 
+web: gunicorn mainWebsite.wsgi 
