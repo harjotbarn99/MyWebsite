@@ -1,5 +1,6 @@
-import os
-if (os.environ.get("PRODUCTION") == "True"):
-    from .prod import *
-else:
-    from .dev import *
+# import os
+# if (os.environ.get("PRODUCTION") == "True"):
+#     from .prod import *
+# else:
+#     from .dev import *
+from .prod import *
