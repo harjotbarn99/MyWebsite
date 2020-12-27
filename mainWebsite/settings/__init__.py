@@ -1,7 +1,8 @@
 import os
 if (os.environ.get("PRODUCTION") == "True"):
+    print("this is production------------------------------------------ ")
     from .prod import *
-    print("this is production ")
 else:
-    from .dev import *
+    print("this is development------------------------------------------- ")
+    from .prod import *
 # from .prod import *
