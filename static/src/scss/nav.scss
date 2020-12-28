@@ -1,27 +1,50 @@
+@import 'mixins';
+@import 'variables';
+.side-hang{
+  width: 5rem;
+  height: 5rem;
+}
+
+
+.footer-link{
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.z100{
+  z-index: 100;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:20');
 
 .imgLogo {
-  height: 40px;
+  min-height: 3rem;
   width: auto;
-  padding: auto;
+  @include rounded-border;
+  // padding: auto;
 }
 
 header {
-  position: relative;
-  max-width: 1200px;
-  margin: 20px auto;
+  position: fixed;
+  top: 0.5rem;
+  left: 2.5vw;
+  padding-right: 1rem;
+  z-index: 100;
+  width: 95vw;
   background: #fff;
   box-sizing: border-box;
-  border-radius: 4px;
+  @include rounded-border;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
 .logo {
   color: #069370;
-  height: 60px;
-  font-size: 36px;
-  line-height: 60px;
-  padding: 10px 20px;
+  height: 4rem;
+  font-size: 3rem;
+  line-height: 3.7rem;
+  // padding: 10px 10px;
+  padding-left: 0.5rem;
   /* background: dodgerblue; */
   text-align: center;
   box-sizing: border-box;
@@ -48,12 +71,14 @@ nav ul li {
   list-style: none;
 }
 
+$padding-a-nav: 1rem;
 nav ul li a {
   display: block;
-  margin: 10px 0;
-  padding: 10px 20px;
+  margin: 0.7rem 0.1rem;
+  padding: 0.7rem 0.8rem;
   text-decoration: none;
   color: #262626;
+  @include rounded-border;
 }
 
 nav ul li a.active,
@@ -63,29 +88,24 @@ nav ul li a:hover {
   transition: 0.5s;
 }
 
-@media (max-width: 1200px) {
-  header {
-    margin: 20px;
-  }
-}
 
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin: 0.7rem;
     float: right;
     cursor: pointer;
     text-align: center;
-    font-size: 30px;
+    font-size: 2.1rem;
     color: #069370;
   }
 
   .menu-toggle:before {
     content: '\f0c9';
     font-family: fontAwesome;
-    line-height: 40px;
+    line-height: 2.8rem;
   }
   .menu-toggle.active:before {
     content: '\f00d';
@@ -103,11 +123,12 @@ nav ul li a:hover {
   }
 
   nav.active ul li a {
-    margin: 0;
+    margin: 0.5rem;
   }
 
   .imgLogo {
-    height: 30px;
-    margin-top: 5px;
+    height: 2.1rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
   }
 }
