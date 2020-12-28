@@ -5,14 +5,22 @@
   height: 5rem;
 }
 
-
+$fl-side: 3.5rem;
 .footer-link{
-  margin-left: 1rem;
+  @include rounded-border;
+  width: $fl-side;
+  height: $fl-side;
+  background-color: #fff;
   margin-top: 1rem;
+  padding-left: 50px;
 }
 
 .z100{
   z-index: 100;
+}
+.icon-margin{
+  margin-top: 0.25rem;
+  margin-left: 0.75rem;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:20');
