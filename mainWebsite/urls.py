@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .core.views import default_view, DefaultView
 
-urlpatterns = [path("admin/", admin.site.urls), path("", include("apps.home"))]
+urlpatterns = [path("admin/", admin.site.urls), path("", include("apps.home.urls"))]
 
 # remove this
 
@@ -28,7 +28,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 
-    # import debug_toolbar
+    import debug_toolbar
 
-    # urlpatterns = [
-    #     path("__debug__/", include(debug_toolbar.urls)), ] + urlpatterns
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls)), ] + urlpatterns

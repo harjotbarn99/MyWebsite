@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # mine
-    "mainWebsite.core"
+    "mainWebsite.core",
     "apps.home"
     # third party
 ]

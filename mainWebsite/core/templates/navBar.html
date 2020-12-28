@@ -1,20 +1,26 @@
 {% load static %}
 <header>
-  <a href="#" class="logo"
-    ><img
-      src="{% static 'img/favicon.jpg' %}"
-      height="40px"
-      class="d-inline-block align-top rounded imgLogo"
-      alt="Logo"
-      loading="lazy"
-  /></a>
-  <div class="menu-toggle"></div>
-  <nav>
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">other pages</a></li>
-      <li><a href="#">login</a></li>
-    </ul>
-  </nav>
-  <dic class="clearfix"></dic>
+  <div class="flex-container align-justify">
+    <div >
+      <a href="#" class="logo"
+        ><img
+          src="{% static 'img/favicon.ico' %}"
+          class="d-inline-block imgLogo"
+          alt="Logo"
+          loading="lazy"
+      /></a>
+    </div>
+    <div class="nav-components">
+      <div class="menu-toggle"></div>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">My Projects</a></li>
+          <li><a href="maikto:harjotbarn99@gmail.com">Contact Me</a></li>
+        </ul>
+      </nav>
+      <dic class="clearfix"></dic>
+    </div>
+  </div>
+  
 </header>
