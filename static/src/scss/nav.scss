@@ -4,13 +4,15 @@
   width: 5rem;
   height: 5rem;
 }
-
+.social-toggle{
+ background-color: $background-white;
+}
 $fl-side: 3.5rem;
-.footer-link{
+.social-link{
   @include rounded-border;
   width: $fl-side;
   height: $fl-side;
-  background-color: #fff;
+  background-color: $background-white;
   margin-top: 1rem;
   padding-left: 50px;
 }
@@ -39,7 +41,7 @@ header {
   padding-right: 1rem;
   z-index: 100;
   width: 95vw;
-  background: #fff;
+  background: $background-white;
   box-sizing: border-box;
   @include rounded-border;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
