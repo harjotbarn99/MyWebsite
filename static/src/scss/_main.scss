@@ -1,0 +1,72 @@
+@import 'mixins';
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+//   main container
+.main-container{
+    width: 100vw;
+}
+// container containing contents
+#main-content{
+    background-size: cover;
+    width: 100%;
+}
+// basic for every section
+.section-fullscreen{
+    height: 100vh;
+}
+
+.section-intro{
+    padding-top: 5.75rem;
+    padding-left: 1rem;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+$my-pic-size: 20rem;
+
+.my-intro{
+    background-color: $bg-white-rgba;
+    @include rounded-border;
+    border: solid;
+    border-color: red;
+    min-height: $my-pic-size + 2rem;
+    width: fit-content;
+    max-width: 95%;
+    font-weight: 900;
+    padding: 1rem;
+    margin: auto;
+    text-align: center;
+}
+
+.intro-pic{
+    margin: auto;
+    padding: 2rem;
+    opacity: 1;
+    border: solid;
+    border-color: yellow;
+    height: $my-pic-size;
+    width: $my-pic-size;
+    background-size: cover;
+    background-position: 50% 60%;
+    border-radius: 100%;
+}
+
+.intro-text{
+    padding: auto;
+    padding-right: 0;
+    margin-left: 1rem;
+    vertical-align: middle;
+    @media (max-width: 768px) {
+        margin-top: 1rem;
+    }
+}
+
+
