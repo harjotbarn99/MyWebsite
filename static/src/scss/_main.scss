@@ -4,6 +4,8 @@ body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
   }
+
+//              home app 
 //   main container
 .main-container{
     width: 100vw;
@@ -25,7 +27,6 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +68,19 @@ $my-pic-size: 20rem;
     @media (max-width: 768px) {
         margin-top: 1rem;
     }
+}
+
+.section-projects{
+    background-color: $redOrange;
+}
+
+.div-projects{
+    @extend .my-intro;
+    min-height: fit-content;
+    h1{
+        vertical-align: middle ;
+    }
+    
 }
 
 

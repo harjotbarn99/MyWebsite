@@ -3,25 +3,8 @@
 {% block body %}
 <main id="main" class="main-container" class="row">
     <div id="main-content">
-        <div class="section-fullscreen section-intro row ">
-            <div class="my-intro row ">
-                <div class="intro-pic">
-                </div>
-                <div class="intro-text col">
-                    <p>Hi, I am</p>
-                    <h1>Harjot Barn</h1>
-                    <p>I am an Undergrad at the University of Buffalo.</p>
-                    <p>Major - Computer Science</p>
-                    <p>Minor - Robotics</p>
-                    <p>Micro Credential - Data Science</p>
-                </div>
-            </div>
-        </div>
-        <div class="section-fullscreen section-about row">
-                <h1>About.<br>thsi sis aksdkbas
-                asj cjhasvckbksacbulliqshcilqhscilhw hwipdhfco wihd ocdwhso chwd<br>
-            iladcioshociwdhoi</h1>
-        </div>
+        {% include "home/_intro.html" %}
+        {% include "home/_projects.html" %}
     </div>
 </main>
   
