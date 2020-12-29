@@ -7,7 +7,7 @@ import os
 
 
 def cert_reply_view(request):
-    return HttpResponse(os.environ.get("CERT-REPLY"))
+    return HttpResponse("this should be able to display cert verify")
 
 class DefaultView(TemplateView):
     def get_template_names(self):
