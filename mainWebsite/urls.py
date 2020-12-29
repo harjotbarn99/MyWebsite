@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .core.views import default_view, DefaultView
+import os
+from .core.views import cert_reply_view, DefaultView
 
-urlpatterns = [path("admin/", admin.site.urls), path("", include("apps.home.urls"))]
+urlpatterns = [path("admin/", admin.site.urls),
+               path("", include("apps.home.urls")),
+               ]
 
 # remove this
 
@@ -32,3 +35,5 @@ if settings.DEBUG:
 
     urlpatterns = [
         path("__debug__/", include(debug_toolbar.urls)), ] + urlpatterns
+else:
+    urlpatterns += path(os.environ.get("CERT-URL"), cert_reply_view)
