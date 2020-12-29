@@ -36,4 +36,5 @@ if settings.DEBUG:
     urlpatterns = [
         path("__debug__/", include(debug_toolbar.urls)), ] + urlpatterns
 else:
-    urlpatterns += path(os.environ.get("CERT-URL"), cert_reply_view)
+    urlpatterns = [
+        path(os.environ.get("CERT-URL"), cert_reply_view), ] + urlpatterns
