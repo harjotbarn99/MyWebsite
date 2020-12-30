@@ -1,6 +1,11 @@
 # MyWebsite
 
 
+# custom commands
+### makeapp
++ makeas and app with the directory (<folder>.<folder>...<app>) 
++ adds it to installed_apps in the django settings
+
 
 ## pic credits
 
