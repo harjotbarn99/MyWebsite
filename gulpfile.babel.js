@@ -1,15 +1,11 @@
 'use strict';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
-
 import browserSync from 'browser-sync';
 import del from 'del';
 import path from 'path';
 import gulp from 'gulp';
-import webpack from 'webpack';
-import webpackStream from 'webpack-stream';
 import named from 'vinyl-named';
 import yargs from 'yargs';
-import Vue from 'vue';
+
 
 var sass = require('gulp-dart-sass');
 const sourceMaps = require('gulp-sourcemaps');
@@ -21,7 +17,6 @@ const imagemin = require('gulp-imagemin');
 
 const PRODUCTION = !!yargs.argv.p;
 const _STATIC = path.resolve('static');
-const _NODE_MODULES = path.resolve('node_modules');
 
 //  paths
 const PATHS = {
@@ -31,51 +26,12 @@ const PATHS = {
     scripts: path.join(_STATIC, 'src', 'js'),
     styles: path.join(_STATIC, 'src', 'scss'),
     stylesCss: path.join(_STATIC, 'src', 'css'),
-    other: [
-      path.join(_STATIC, 'src', '**', '*'),
-      '!' + path.join(_STATIC, 'src', '{img,js,lib,scss}'),
-      '!' + path.join(_STATIC, 'src', '{img,js,lib,scss}', '**', '*'),
-    ],
   },
   dest: {
     base: path.join(_STATIC, 'dist'),
     images: path.join(_STATIC, 'dist', 'img'),
     scripts: path.join(_STATIC, 'dist', 'js'),
     styles: path.join(_STATIC, 'dist', 'css'),
-  },
-  lib: {
-    base: undefined,
-    styles: [path.join(_NODE_MODULES, 'foundation-sites', 'scss')],
-  },
-};
-
-const webpackConfig = {
-  mode: PRODUCTION ? 'production' : 'development',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-    ],
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: 'vendor',
-    },
-  },
-  plugins: [
-    new VueLoaderPlugin(),
-  ],
-  resolve: {
-    alias: {
-      vue: PRODUCTION ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
-    }
   },
 };
 
@@ -92,7 +48,7 @@ function sassCompile() {
   return gulp
     .src(path.join(PATHS.src.styles, '**', '*'))
     .pipe(gulpif(!PRODUCTION, sourceMaps.init()))
-    .pipe(sass({ includePaths: PATHS.lib.styles }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: 'ie9' })))
     .pipe(gulpif(!PRODUCTION, sourceMaps.write()))
@@ -124,7 +80,6 @@ function scripts() {
       .src(path.join(PATHS.src.scripts, '**', '*.js'))
       .pipe(named())
       .pipe(gulpif(!PRODUCTION, sourceMaps.init()))
-      .pipe(webpackStream(webpackConfig, webpack))
       .pipe(gulpif(PRODUCTION, uglify()))
       .pipe(gulpif(!PRODUCTION, sourceMaps.write()))
       .pipe(gulp.dest(PATHS.dest.scripts))
