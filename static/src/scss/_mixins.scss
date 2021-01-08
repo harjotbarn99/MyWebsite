@@ -1,3 +1,16 @@
 @mixin rounded-border {
-    border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+@mixin hold-content-centre {
+  background-color: $bg-white-rgba;
+  @include rounded-border;
+  border: solid;
+  border-color: red;
+  width: fit-content;
+  max-width: 95%;
+  font-weight: 900;
+  padding: 1rem;
+  margin: auto;
+  text-align: center;
 }

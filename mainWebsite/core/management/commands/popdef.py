@@ -47,8 +47,8 @@ class Command(BaseCommand):
                 o.picture = dicti["fields"]["picture"]
                 o.previous_picture = dicti["fields"]["previous_picture"]
                 o.save()
-            elif dicti["model"] == "sociallink":
-                o = SocialLink.objects.create()
+            elif dicti["model"] == "socialwebsite":
+                o = SocialWebsite.objects.create()
                 o.site = dicti["fields"]["site"]
                 o.link = dicti["fields"]["link"]
                 o.classes = dicti["fields"]["classes"]
