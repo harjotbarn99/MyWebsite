@@ -65,13 +65,13 @@ body {
   }
 }
 
-.section-projects {
+.section-works {
   @include background-full-fixed;
   @include flex-justify-align;
   padding-top: 3rem;
   padding-bottom: 2rem;
 
-  .div-projects {
+  .div-works {
     margin-top: 1rem;
     padding-top: 1rem;
     @include hold-content-centre;
@@ -91,30 +91,30 @@ body {
       border-color: $none-card;
     }
     
-    .project-card{
+    .work-card{
       background: none;
       margin: 0.5rem;
       padding: 0.5rem;
       border: none;
 
-      .project-card-header{
+      .work-card-header{
           border-width: 0.5rem;
           @include rounded-border;
           background-color: $bg-white-rgba-darker;
       }
 
-      .project-card-image{
+      .work-card-image{
         margin-top: 1rem;
         margin-bottom: 0.5rem;
         @include rounded-border;
       }
 
-      .project-card-body{
+      .work-card-body{
         @include rounded-border;
         background-color: $bg-white-rgba-darker;
       }
 
-      .project-card-text{
+      .work-card-text{
         @include rounded-border;
       }
 

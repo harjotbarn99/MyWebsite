@@ -1,0 +1,53 @@
+{% load static%}
+<div id="works" class="section-fullscreen-min section-works row ">
+    <style>
+        .section-works{
+        background-image: url({% static 'img/sea-under-cloudy-sky.jpg' %}) ;
+        }
+        </style>
+    {% with col_size="col-lg-3 col-md-5"  %}
+    {% comment %}  {% endcomment %}
+    <div class="div-works row justify-content-center">
+        {% for work in works %}
+            {% if work.category == "PR" %}
+            <div class="card work-card {{col_size}}">
+                <div class="card-header PR work-card-header">{{work.title}}</div>
+                <img src="{{work.picture.url}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+                <div class="card-body work-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <div class="card-text work-card-text">{{work.description}}</div>
+                </div>
+            </div>
+            {% elif work.category == "OS" %}
+            <div class="card work-card {{col_size}}">
+                <div class="card-header OS work-card-header">{{work.title}}</div>
+                <img src="{{work.picture.url}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+                <div class="card-body work-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text work-card-text">{{work.description}}</p>
+                </div>
+            </div>
+            {% elif work.category == "CB" %}
+            <div class="card work-card {{col_size}}">
+                <div class="card-header CB work-card-header">{{work.title}}</div>
+                <img src="{{work.picture.url}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+                <div class="card-body work-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text work-card-text">{{work.description}}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="card work-card {{col_size}}">
+                <div class="card-header NN work-card-header">{{work.title}}</div>
+                <img src="{{work.picture.url}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+                <div class="card-body work-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text work-card-text">{{work.description}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+    {% endwith %}
+</div>

@@ -5,8 +5,8 @@ from django.core.files.storage import default_storage
 # Create your models here.
 
 
-class Project(models.Model):
-    class TypeOfProject(models.TextChoices):
+class Work(models.Model):
+    class TypeOfWork(models.TextChoices):
         OPEN_SOURCE = "OS", gl("Open Source")
         PROJECT = "PR", gl("Project")
         CONTRIBUTION = "CB", gl("Contribution")
@@ -15,14 +15,14 @@ class Project(models.Model):
     # name is the name giver as slug
     name = models.CharField(max_length=50, blank=True)
     category = models.CharField(
-        max_length=2, choices=TypeOfProject.choices, default=TypeOfProject.PROJECT)
+        max_length=2, choices=TypeOfWork.choices, default=TypeOfWork.PROJECT)
     description = models.TextField(blank=True)
     in_production = models.BooleanField(default=False)
     production_link = models.TextField(blank=True)
     on_github = models.BooleanField(default=False)
     github_link = models.TextField(blank=True)
     picture = models.ImageField(
-        upload_to="project_thumbnails", default="default_project.png")
+        upload_to="work_thumbnails", default="default_work.png")
     previous_picture = models.TextField(blank=True)
 
     def __str__(self):
@@ -30,16 +30,16 @@ class Project(models.Model):
 
     def save(self, *args, **kwargs):
         self.name = self.title.lower().replace(" ","_")
-        if self.previous_picture != "default_project.png" and default_storage.exists("project_thumbnails/"+self.previous_picture):
-            default_storage.delete("project_thumbnails/"+self.previous_picture)
+        if self.previous_picture != "default_work.png" and default_storage.exists("work_thumbnails/"+self.previous_picture):
+            default_storage.delete("work_thumbnails/"+self.previous_picture)
         self.previous_picture = self.picture.name
         return super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         previous_picture = self.previous_picture
         ret = super().delete(*args, **kwargs)
-        if previous_picture != "default_project.png" and default_storage.exists("project_thumbnails/"+previous_picture):
-            default_storage.delete("project_thumbnails/"+previous_picture)
+        if previous_picture != "default_work.png" and default_storage.exists("work_thumbnails/"+previous_picture):
+            default_storage.delete("work_thumbnails/"+previous_picture)
         return ret
 
 
@@ -50,7 +50,7 @@ class MyIntro(models.Model):
     major = models.CharField(max_length=50,blank=True)
     minor = models.CharField(max_length=50,blank=True)
     micro_credential = models.CharField(max_length=50,blank=True)
-    picture = models.ImageField(default='my-pic.png')
+    picture = models.ImageField(default='default-me-pic.png')
     previous_picture = models.TextField(blank=True)
     email = models.EmailField(max_length=254)
     resume_link = models.TextField(blank=True, default="#")
