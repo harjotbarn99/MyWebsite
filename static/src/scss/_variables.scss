@@ -11,13 +11,14 @@ $greyLight2: #e4e4e4;
 $vlackLight: #666666;
 $yellow: #ffc72c;
 
-$background-white:aliceblue;
-$bg-white-rgba: rgb(240, 248, 255,0.5);
+$background-white: aliceblue;
+$bg-white-rgba: rgb(240, 248, 255, 0.5);
+$bg-white-rgba-darker: rgb(240, 248, 255, 0.7);
 $menu-green: $seagreen;
-
-.cl {
-    background-color: $blue;
-}
+$project-card: $seagreen;
+$open-source-card: $blue;
+$contribution-card: $yellow;
+$none-card: $redOrange;
 
 // $primary-color: ;
 // $secondary-color: ;

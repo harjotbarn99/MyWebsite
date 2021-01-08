@@ -19,17 +19,18 @@ body {
 .section-fullscreen {
   height: 100vh;
 }
+.section-fullscreen-min {
+  min-height: 100vh;
+}
 
 .section-intro {
   padding-top: 5.75rem;
+  @media (max-width: 768px) {
+        padding-top: 4.5rem;
+      }
   padding-left: 1rem;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include background-full-fixed;
+  @include flex-justify-align;
 
   $my-pic-size: 20rem;
 
@@ -65,13 +66,59 @@ body {
 }
 
 .section-projects {
-  background-color: $redOrange;
+  @include background-full-fixed;
+  @include flex-justify-align;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
 
   .div-projects {
+    margin-top: 1rem;
+    padding-top: 1rem;
     @include hold-content-centre;
     min-height: fit-content;
-    h1 {
-      vertical-align: middle;
+    max-width: 95vw;
+
+    .PR{
+      border-color: $project-card;
     }
+    .OS{
+      border-color: $open-source-card;
+    }
+    .CB{
+      border-color: $contribution-card;
+    }
+    .NN{
+      border-color: $none-card;
+    }
+    
+    .project-card{
+      background: none;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      border: none;
+
+      .project-card-header{
+          border-width: 0.5rem;
+          @include rounded-border;
+          background-color: $bg-white-rgba-darker;
+      }
+
+      .project-card-image{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        @include rounded-border;
+      }
+
+      .project-card-body{
+        @include rounded-border;
+        background-color: $bg-white-rgba-darker;
+      }
+
+      .project-card-text{
+        @include rounded-border;
+      }
+
+    }
+
   }
 }

@@ -29,6 +29,7 @@ class Project(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        self.name = self.title.lower().replace(" ","_")
         if self.previous_picture != "default_project.png" and default_storage.exists("project_thumbnails/"+self.previous_picture):
             default_storage.delete("project_thumbnails/"+self.previous_picture)
         self.previous_picture = self.picture.name

@@ -1,5 +1,53 @@
-<div id="projects" class="section-fullscreen section-projects row ">
-    <div class="div-projects row ">
-        <h1>Projects coming soon.</h1>
+{% load static%}
+<div id="projects" class="section-fullscreen-min section-projects row ">
+    <style>
+        .section-projects{
+        background-image: url({% static 'img/sea-under-cloudy-sky.jpg' %}) ;
+        }
+        </style>
+    {% with col_size="col-lg-3 col-md-5"  %}
+    {% comment %}  {% endcomment %}
+    <div class="div-projects row justify-content-center">
+        {% for project in projects %}
+            {% if project.category == "PR" %}
+            <div class="card project-card {{col_size}}">
+                <div class="card-header PR project-card-header">{{project.title}}</div>
+                <img src="{{project.picture.url}}" class="card-img-top project-card-image" alt="{{project.title|add:"'s image"}}">
+                <div class="card-body project-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <div class="card-text project-card-text">{{project.description}}</div>
+                </div>
+            </div>
+            {% elif project.category == "OS" %}
+            <div class="card project-card {{col_size}}">
+                <div class="card-header OS project-card-header">{{project.title}}</div>
+                <img src="{{project.picture.url}}" class="card-img-top project-card-image" alt="{{project.title|add:"'s image"}}">
+                <div class="card-body project-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text project-card-text">{{project.description}}</p>
+                </div>
+            </div>
+            {% elif project.category == "CB" %}
+            <div class="card project-card {{col_size}}">
+                <div class="card-header CB project-card-header">{{project.title}}</div>
+                <img src="{{project.picture.url}}" class="card-img-top project-card-image" alt="{{project.title|add:"'s image"}}">
+                <div class="card-body project-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text project-card-text">{{project.description}}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="card project-card {{col_size}}">
+                <div class="card-header NN project-card-header">{{project.title}}</div>
+                <img src="{{project.picture.url}}" class="card-img-top project-card-image" alt="{{project.title|add:"'s image"}}">
+                <div class="card-body project-card-body">
+                    {% comment %} <h5 class="card-title">Primary card title</h5> {% endcomment %}
+                    <p class="card-text project-card-text">{{project.description}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        
     </div>
+    {% endwith %}
 </div>
