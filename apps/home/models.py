@@ -46,9 +46,9 @@ class MyIntro(models.Model):
     greeting_text = models.CharField(max_length=100)
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=200)
-    major = models.CharField(max_length=50)
-    minor = models.CharField(max_length=50)
-    micro_credential = models.CharField(max_length=50)
+    major = models.CharField(max_length=50,blank=True)
+    minor = models.CharField(max_length=50,blank=True)
+    micro_credential = models.CharField(max_length=50,blank=True)
     picture = models.ImageField(default='my-pic.png')
     previous_picture = models.TextField(blank=True)
     email = models.EmailField(max_length=254)
@@ -75,7 +75,7 @@ class MyIntro(models.Model):
         verbose_name_plural = 'My Intros'
 
 
-class SocialLink(models.Model):
+class SocialWebsite(models.Model):
     site = models.CharField(max_length=50)
     classes = models.TextField()
     link = models.TextField()
@@ -84,5 +84,5 @@ class SocialLink(models.Model):
         return self.site
 
     class Meta:
-        verbose_name = 'Social Link'
-        verbose_name_plural = 'Social Links'
+        verbose_name = 'Social Website'
+        verbose_name_plural = 'Social Websites'

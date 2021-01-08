@@ -5,4 +5,4 @@ from .models import *
 
 admin.site.register(Project)
 admin.site.register(MyIntro)
-admin.site.register(SocialLink)
+admin.site.register(SocialWebsite)
