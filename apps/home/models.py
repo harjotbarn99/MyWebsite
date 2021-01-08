@@ -32,7 +32,6 @@ class Project(models.Model):
         if self.previous_picture != "default_project.png" and default_storage.exists("project_thumbnails/"+self.previous_picture):
             default_storage.delete("project_thumbnails/"+self.previous_picture)
         self.previous_picture = self.picture.name
-        print(self.category,"\n",dir(self.category))
         return super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
