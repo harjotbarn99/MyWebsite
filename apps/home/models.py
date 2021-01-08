@@ -17,7 +17,9 @@ class Project(models.Model):
     category = models.CharField(
         max_length=2, choices=TypeOfProject.choices, default=TypeOfProject.PROJECT)
     description = models.TextField(blank=True)
+    in_production = models.BooleanField(default=False)
     production_link = models.TextField(blank=True)
+    on_github = models.BooleanField(default=False)
     github_link = models.TextField(blank=True)
     picture = models.ImageField(
         upload_to="project_thumbnails", default="default_project.png")
