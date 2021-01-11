@@ -122,3 +122,29 @@ body {
 
   }
 }
+
+.section-experience{
+  @include background-full-fixed;
+  @include flex-justify-align;
+
+  .div-experience{
+    @include hold-content-centre;
+    min-height: fit-content;
+    max-width: 95vw;
+
+  }
+
+}
+
+.section-about{
+  @include background-full-fixed;
+  @include flex-justify-align;
+
+  .div-about{
+    @include hold-content-centre;
+    min-height: fit-content;
+    max-width: 95vw;
+
+  }
+
+}
