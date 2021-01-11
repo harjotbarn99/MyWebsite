@@ -1,0 +1,12 @@
+<div class="card work-card col-lg-3 col-md-5">
+    <div class="card-header {{work.category}} work-card-header">{{work.title}}</div>
+    <img src="{{work.picture.url}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+    <div class="card-body work-card-body">
+        <div class="card-text work-card-text">
+        {% if work.production%}
+        <p>prod</p>
+        {% endif %}
+        {{work.description}}
+        </div>
+    </div>
+</div>
