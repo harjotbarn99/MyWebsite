@@ -22,24 +22,25 @@ class Work(models.Model):
     on_github = models.BooleanField(default=False)
     github_link = models.TextField(blank=True)
     picture = models.ImageField(
-        upload_to="work_thumbnails", default="default_work.png")
+        default="default_work.png", upload_to="work_thumbnails")
     previous_picture = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.name = self.title.lower().replace(" ","_")
-        if self.previous_picture != "default_work.png" and default_storage.exists("work_thumbnails/"+self.previous_picture):
-            default_storage.delete("work_thumbnails/"+self.previous_picture)
+        if self.name == "":
+            self.name = self.title.lower().replace(" ", "_")
+        if self.previous_picture != "default_work.png" and default_storage.exists(self.previous_picture):
+            default_storage.delete(self.previous_picture)
         self.previous_picture = self.picture.name
         return super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         previous_picture = self.previous_picture
         ret = super().delete(*args, **kwargs)
-        if previous_picture != "default_work.png" and default_storage.exists("work_thumbnails/"+previous_picture):
-            default_storage.delete("work_thumbnails/"+previous_picture)
+        if previous_picture != "default_work.png" and default_storage.exists(previous_picture):
+            default_storage.delete(previous_picture)
         return ret
 
 
@@ -47,9 +48,9 @@ class MyIntro(models.Model):
     greeting_text = models.CharField(max_length=100)
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=200)
-    major = models.CharField(max_length=50,blank=True)
-    minor = models.CharField(max_length=50,blank=True)
-    micro_credential = models.CharField(max_length=50,blank=True)
+    major = models.CharField(max_length=50, blank=True)
+    minor = models.CharField(max_length=50, blank=True)
+    micro_credential = models.CharField(max_length=50, blank=True)
     picture = models.ImageField(default='default-me-pic.png')
     previous_picture = models.TextField(blank=True)
     email = models.EmailField(max_length=254)
@@ -59,7 +60,7 @@ class MyIntro(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        if self.previous_picture and self.previous_picture != "my-pic.png" and default_storage.exists(self.previous_picture):
+        if self.previous_picture and self.previous_picture != "default-my-pic.png" and default_storage.exists(self.previous_picture):
             default_storage.delete(self.previous_picture)
         self.previous_picture = self.picture.name
         return super().save(*args, **kwargs)
@@ -87,3 +88,86 @@ class SocialWebsite(models.Model):
     class Meta:
         verbose_name = 'Social Website'
         verbose_name_plural = 'Social Websites'
+
+
+class HomePage(models.Model):
+    default_logo = "def-favicon.ico"
+    logo = models.ImageField(default=default_logo)
+    previous_logo = models.TextField(blank=True)
+
+    backgrounds_path = "backgrounds"
+
+    intro = models.BooleanField(default=True)
+    intro_background_default = "def-intro-back.jpg"
+    intro_background = models.ImageField(
+        upload_to=backgrounds_path, default=intro_background_default)
+    previous_intro_background = models.TextField(blank=True)
+
+    work = models.BooleanField(default=True)
+    work_background_default = "def-work-back.jpg"
+    work_background = models.ImageField(
+        upload_to=backgrounds_path, default=work_background_default)
+    previous_work_background = models.TextField(blank=True)
+
+    experience = models.BooleanField(default=True)
+    experience_background_default = "def-experience-back.jpg"
+    experience_background = models.ImageField(
+        upload_to=backgrounds_path, default=experience_background_default)
+    previous_experience_background = models.TextField(blank=True)
+
+    about = models.BooleanField(default=True)
+    about_background_default = "def-about-back.jpg"
+    about_background = models.ImageField(
+        upload_to=backgrounds_path, default=about_background_default)
+    previous_about_background = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # logo
+        self.previous_logo = self.check_and_delete(
+            self.logo, self.previous_logo, self.default_logo)
+        # intro
+        self.previous_intro_background = self.check_and_delete(self.intro_background, self.previous_intro_background,
+                                                            self.intro_background_default)
+        # work
+        self.previous_work_background = self.check_and_delete(self.work_background, self.previous_work_background,
+                                                              self.work_background_default)
+        # experience
+        self.previous_experience_background = self.check_and_delete(self.experience_background, self.previous_experience_background,
+                                                                    self.experience_background_default)
+        # about
+        self.previous_about_background = self.check_and_delete(self.about_background, self.previous_about_background,
+                                                               self.about_background_default)
+
+        return super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        # logo
+        self.delete_pics(
+            self.logo, self.default_logo)
+        # intro
+        self.delete_pics(self.intro_background, self.intro_background_default)
+        # work
+        self.delete_pics(self.work_background, self.work_background_default)
+        # experience
+        self.delete_pics(self.experience_background, self.experience_background_default)
+        # about
+        self.delete_pics(self.about_background, self.about_background_default)
+        return super().delete(*args, **kwargs)
+
+    def check_and_delete(self, curr, prev, default):
+        if prev and curr.name != prev and prev != default and default_storage.exists(prev):
+            default_storage.delete(prev)
+        return curr.name
+
+    def delete_pics(self, curr, default):
+        if curr.name != default and default_storage.exists(curr.name):
+            default_storage.delete(curr.name)
+        return 
+
+    def __str__(self):
+        return "Home page"
+
+    class Meta:
+        verbose_name = 'HomePage'
+        verbose_name_plural = 'HomePages'

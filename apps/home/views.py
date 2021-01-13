@@ -6,6 +6,7 @@ from .models import *
 def base_context(context):
     context["social_websites"] = SocialWebsite.objects.all()
     context["me"] = MyIntro.objects.all().first()
+    context["home_page"] = HomePage.objects.all().first()
     return context
 
 class HomeView(TemplateView):

@@ -12,7 +12,12 @@
     <script src="https://kit.fontawesome.com/12a43a9cdb.js" crossorigin="anonymous"></script>
     <!--  -->
     <title>{% block title %}{{me.name}}'s Website{% endblock title %}</title>
-    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    {% if home_page %}
+      <link rel="icon" href="{{home_page.logo.url}}" type="image/x-icon">
+      {% else %}
+      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+      {% endif %}
+    
     <link rel="stylesheet" href="{%static 'css/nav.css' %}" />
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block stylesheets %}{% endblock stylesheets%}

@@ -2,7 +2,11 @@
 <div id="intro" class="section-fullscreen section-intro row ">
 <style>
     .section-intro{
-      background-image: url({% static 'img/black-mountain.jpg' %}) ;
+        {% if home_page %}
+        background-image: url({{home_page.intro_background.url}}) ;
+        {% else %}
+        background-image: url({% static 'img/black-mountain.jpg' %}) ;
+        {% endif %}
     }
     .intro-pic{
         background-image: url({{me.picture.url}});

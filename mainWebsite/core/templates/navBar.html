@@ -5,7 +5,11 @@
     <div >
       <a href="{{url_home}}" class="logo"
         ><img
+          {% if home_page %}
+          src="{{home_page.logo.url}}"
+          {% else %}
           src="{% static 'img/favicon.ico' %}"
+          {% endif %}
           class="d-inline-block imgLogo"
           alt="Logo"
           loading="lazy"

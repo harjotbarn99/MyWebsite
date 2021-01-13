@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Work)
 admin.site.register(MyIntro)
 admin.site.register(SocialWebsite)
+admin.site.register(HomePage)

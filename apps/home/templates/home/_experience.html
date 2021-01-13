@@ -2,7 +2,12 @@
 <div id="experience" class="section-fullscreen section-experience row ">
     <style>
         .section-experience{
-        background-image: url({% static 'img/pine-trees-during-night-time.jpg' %}) ;
+            {% if home_page %}
+            background-image: url({{home_page.experience_background.url}}) ;
+            {% else %}
+            background-image: url({% static 'img/pine-trees-during-night-time.jpg' %}) ;
+            {% endif %}
+
         }
         </style>
     <div class="div-experience row justify-content-center">

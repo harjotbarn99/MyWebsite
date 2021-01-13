@@ -2,7 +2,11 @@
 <div id="works" class="section-fullscreen-min section-works row ">
     <style>
         .section-works{
-        background-image: url({% static 'img/sea-under-cloudy-sky.jpg' %}) ;
+            {% if home_page %}
+            background-image: url({{home_page.work_background.url}}) ;
+            {% else %}
+            background-image: url({% static 'img/sea-under-cloudy-sky.jpg' %}) ;
+            {% endif %}
         }
         </style>
     {% comment %}  {% endcomment %}
