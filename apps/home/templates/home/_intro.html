@@ -9,7 +9,11 @@
         {% endif %}
     }
     .intro-pic{
-        background-image: url({{me.picture.url}});
+        {% if me.picture.url %}
+            background-image: url({{me.picture.url}});
+        {% else %}
+            background-image: url({% static 'img/my-pic.jpg' %});
+        {% endif %}
     }
 </style>
     <div class="my-intro row ">
