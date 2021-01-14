@@ -1,13 +1,17 @@
 {% load static%}
 <div id="intro" class="section-fullscreen section-intro row ">
 <style>
+    {% with bg_url=home_page.intro_background.url %}
+        
+    
     .section-intro{
         {% if home_page %}
-        background-image: url({{ home_page.intro_background.url }}) ;
+        background-image: url({{ bg_url }}) ;
         {% else %}
         background-image: url({% static 'img/black-mountain.jpg' %}) ;
         {% endif %}
     }
+    
     .intro-pic{
         background-image: url({{ me.picture.url }});
     }
@@ -28,6 +32,9 @@
             {% if me.micro_credential%}
             <p>Micro Credential - {{me.micro_credential}}</p>
             {% endif %}
+            <p>{{ home_page.intro_background.url }}</p>
+            <p>{{ bg_url }}</p>
         </div>
+        {% endwith %}
     </div>
 </div>
