@@ -52,6 +52,7 @@ class MyIntro(models.Model):
     minor = models.CharField(max_length=50, blank=True)
     micro_credential = models.CharField(max_length=50, blank=True)
     picture = models.ImageField(default='default-me-pic.png')
+    #  need to set up S3 to make this
     previous_picture = models.TextField(blank=True)
     email = models.EmailField(max_length=254)
     resume_link = models.TextField(blank=True, default="#")
@@ -171,3 +172,13 @@ class HomePage(models.Model):
     class Meta:
         verbose_name = 'HomePage'
         verbose_name_plural = 'HomePages'
+
+
+# class Year(models.Model):
+
+#     def __str__(self):
+#         pass
+
+#     class Meta:
+#         verbose_name = 'Year'
+#         verbose_name_plural = 'Years'
