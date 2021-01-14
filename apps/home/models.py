@@ -173,7 +173,7 @@ class HomePage(models.Model):
         verbose_name = 'HomePage'
         verbose_name_plural = 'HomePages'
 
-# test urls 2
+# test deploy
 
 # class Year(models.Model):
 
