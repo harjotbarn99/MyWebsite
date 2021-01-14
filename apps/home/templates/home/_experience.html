@@ -3,7 +3,7 @@
     <style>
         .section-experience{
             {% if home_page %}
-            background-image: url({{home_page.experience_background.url}}) ;
+            background-image: url({{home_page.experience_background.url|safe}}) ;
             {% else %}
             background-image: url({% static 'img/pine-trees-during-night-time.jpg' %}) ;
             {% endif %}

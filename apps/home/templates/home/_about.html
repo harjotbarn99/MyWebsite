@@ -3,7 +3,7 @@
     <style>
         .section-about{
             {% if home_page %}
-            background-image: url({{home_page.about_background.url}}) ;
+            background-image: url({{home_page.about_background.url|safe}}) ;
             {% else %}
             background-image: url({% static 'img/aerial-sea.jpg' %}) ;
             {% endif %}

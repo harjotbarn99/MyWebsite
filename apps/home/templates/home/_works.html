@@ -3,7 +3,7 @@
     <style>
         .section-works{
             {% if home_page %}
-            background-image: url({{home_page.work_background.url}}) ;
+            background-image: url({{home_page.work_background.url|safe}}) ;
             {% else %}
             background-image: url({% static 'img/sea-under-cloudy-sky.jpg' %}) ;
             {% endif %}
