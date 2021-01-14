@@ -173,9 +173,10 @@ class HomePage(models.Model):
         verbose_name = 'HomePage'
         verbose_name_plural = 'HomePages'
 
-# test deploy
 
 # class Year(models.Model):
+#     year = 
+#     experiences = 
 
 #     def __str__(self):
 #         pass
