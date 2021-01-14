@@ -3,18 +3,13 @@
 <style>
     .section-intro{
         {% if home_page %}
-        background-image: url({{home_page.intro_background.url}}) ;
+        background-image: url({{ home_page.intro_background.url }}) ;
         {% else %}
         background-image: url({% static 'img/black-mountain.jpg' %}) ;
         {% endif %}
     }
     .intro-pic{
-        background-image: url({% static 'img/my-pic.jpg' %});
-        {% comment %} {% if me.picture.url %}
-            background-image: url({{me.picture.url}});
-        {% else %}
-            background-image: url({% static 'img/my-pic.jpg' %});
-        {% endif %} {% endcomment %}
+        background-image: url({{ me.picture.url }});
     }
 </style>
     <div class="my-intro row ">
