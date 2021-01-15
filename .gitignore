@@ -16,6 +16,7 @@ node_modules
 # Built static files
 static/dist
 backgrounds
+work_thumbnails
 
 # Python virtual environment
 venv

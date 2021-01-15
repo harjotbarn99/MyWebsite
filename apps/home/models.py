@@ -13,7 +13,7 @@ class Work(models.Model):
 
     title = models.CharField(max_length=50)
     # name is the name giver as slug
-    name = models.CharField(max_length=50, blank=True)
+    name = models.CharField(blank=True, max_length=50)
     category = models.CharField(
         max_length=2, choices=TypeOfWork.choices, default=TypeOfWork.PROJECT)
     description = models.TextField(blank=True)
@@ -31,7 +31,7 @@ class Work(models.Model):
     def save(self, *args, **kwargs):
         if self.name == "":
             self.name = self.title.lower().replace(" ", "_")
-        if self.previous_picture != "default_work.png" and default_storage.exists(self.previous_picture):
+        if self.previous_picture and self.previous_picture != self.picture.name and self.previous_picture != "default_work.png" and default_storage.exists(self.previous_picture):
             default_storage.delete(self.previous_picture)
         self.previous_picture = self.picture.name
         return super().save(*args, **kwargs)
@@ -39,7 +39,7 @@ class Work(models.Model):
     def delete(self, *args, **kwargs):
         previous_picture = self.previous_picture
         ret = super().delete(*args, **kwargs)
-        if previous_picture != "default_work.png" and default_storage.exists(previous_picture):
+        if previous_picture and previous_picture != "default_work.png" and default_storage.exists(previous_picture):
             default_storage.delete(previous_picture)
         return ret
 
@@ -61,7 +61,7 @@ class MyIntro(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        if self.previous_picture and self.previous_picture != "default-my-pic.png" and default_storage.exists(self.previous_picture):
+        if self.previous_picture and self.previous_picture != self.picture.name and self.previous_picture != "default-my-pic.png" and default_storage.exists(self.previous_picture):
             default_storage.delete(self.previous_picture)
         self.previous_picture = self.picture.name
         return super().save(*args, **kwargs)
@@ -69,7 +69,7 @@ class MyIntro(models.Model):
     def delete(self, *args, **kwargs):
         previous_picture = self.previous_picture
         ret = super().delete(*args, **kwargs)
-        if default_storage.exists(previous_picture):
+        if previous_picture and previous_picture != "default-my-pic.png" and default_storage.exists(previous_picture):
             default_storage.delete(previous_picture)
         return ret
 
@@ -162,7 +162,7 @@ class HomePage(models.Model):
         return curr.name
 
     def delete_pics(self, curr, default):
-        if curr.name != default and default_storage.exists(curr.name):
+        if curr.name and curr.name != default and default_storage.exists(curr.name):
             default_storage.delete(curr.name)
         return 
 
