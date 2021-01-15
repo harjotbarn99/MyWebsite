@@ -101,6 +101,7 @@ body {
           border-width: 0.5rem;
           @include rounded-border;
           background-color: $bg-white-rgba-darker;
+
       }
 
       .work-card-image{
@@ -116,6 +117,12 @@ body {
 
       .work-card-text{
         @include rounded-border;
+
+        .work_links{
+          a{
+            margin-right: 0.25rem;
+          }
+        }
       }
 
     }

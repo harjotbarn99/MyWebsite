@@ -17,6 +17,8 @@ class Work(models.Model):
     category = models.CharField(
         max_length=2, choices=TypeOfWork.choices, default=TypeOfWork.PROJECT)
     description = models.TextField(blank=True)
+    in_development = models.BooleanField(default=True)
+    development_message = models.TextField(default="In development.",blank=True)
     in_production = models.BooleanField(default=False)
     production_link = models.TextField(blank=True)
     on_github = models.BooleanField(default=False)
