@@ -175,8 +175,8 @@ class HomePage(models.Model):
 
 
 # class Year(models.Model):
-#     year = 
-#     experiences = 
+#     year = the year 
+#     experiences = one to many
 
 #     def __str__(self):
 #         pass
