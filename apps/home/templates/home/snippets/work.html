@@ -5,10 +5,10 @@
     <img src="{{work.picture.url|safe}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
     <div class="card-body work-card-body">
         <div class="card-text work-card-text">
-        {{work.description}}
-        {% if work.in_development %}
-        </br>{{ work.development_message }}
+        {% if work.show_status %}
+        {{ work.status_message }}</br>
         {% endif %}
+        {{work.description}}
         {% if work.on_github or work.in_production %}
         <div class="work_links ">
         {% if work.in_production%}

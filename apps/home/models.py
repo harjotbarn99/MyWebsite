@@ -17,8 +17,8 @@ class Work(models.Model):
     category = models.CharField(
         max_length=2, choices=TypeOfWork.choices, default=TypeOfWork.PROJECT)
     description = models.TextField(blank=True)
-    in_development = models.BooleanField(default=True)
-    development_message = models.TextField(default="In development.",blank=True)
+    show_status = models.BooleanField(default=True)
+    status_message = models.TextField(default="In development.", blank=True)
     in_production = models.BooleanField(default=False)
     production_link = models.TextField(blank=True)
     on_github = models.BooleanField(default=False)
@@ -131,7 +131,7 @@ class HomePage(models.Model):
             self.logo, self.previous_logo, self.default_logo)
         # intro
         self.previous_intro_background = self.check_and_delete(self.intro_background, self.previous_intro_background,
-                                                            self.intro_background_default)
+                                                               self.intro_background_default)
         # work
         self.previous_work_background = self.check_and_delete(self.work_background, self.previous_work_background,
                                                               self.work_background_default)
@@ -153,7 +153,8 @@ class HomePage(models.Model):
         # work
         self.delete_pics(self.work_background, self.work_background_default)
         # experience
-        self.delete_pics(self.experience_background, self.experience_background_default)
+        self.delete_pics(self.experience_background,
+                         self.experience_background_default)
         # about
         self.delete_pics(self.about_background, self.about_background_default)
         return super().delete(*args, **kwargs)
@@ -166,7 +167,7 @@ class HomePage(models.Model):
     def delete_pics(self, curr, default):
         if curr.name and curr.name != default and default_storage.exists(curr.name):
             default_storage.delete(curr.name)
-        return 
+        return
 
     def __str__(self):
         return "Home page"
@@ -176,13 +177,28 @@ class HomePage(models.Model):
         verbose_name_plural = 'HomePages'
 
 
-# class Year(models.Model):
-#     year = the year 
-#     experiences = one to many
+class Experience(models.Model):
+    class TypeOfExperience(models.TextChoices):
+        VOLUNTEER = "OS", gl("Volunteer")
+        INTERNSHIP = "IS", gl("Internship")
+        PART_TIME = "PT", gl("Part Time")
+        FULL_TIME = "FT", gl("Full Time")
+        RESEARCH = "RS", gl("Research")
+        
 
-#     def __str__(self):
-#         pass
+    company = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    place = models.CharField(max_length=100)
+    start_date = models.DateField(auto_now=False)
+    active = models.BooleanField(default=False)
+    end_date = models.DateField(auto_now=False)
+    description = models.TextField(max_length=500)
+    category = models.CharField(
+        max_length=2, choices=TypeOfExperience.choices, default=TypeOfExperience.INTERNSHIP)
 
-#     class Meta:
-#         verbose_name = 'Year'
-#         verbose_name_plural = 'Years'
+    def __str__(self):
+        return self.position
+
+    class Meta:
+        verbose_name = 'Experience'
+        verbose_name_plural = 'Experiences'
