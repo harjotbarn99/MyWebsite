@@ -1,5 +1,5 @@
 {% load static%}
-<div id="experience" class="section-fullscreen section-experience row ">
+<div id="experience" class="section-fullscreen-min section-experience row ">
     <style>
         .section-experience{
             {% if home_page %}
@@ -10,7 +10,10 @@
 
         }
         </style>
+        <div class="experience-title h2">Work Experience</div>
     <div class="div-experience row justify-content-center">
-        <p> this is experience </p>
+        {% for experience in experiences %}
+           {% include 'home/snippets/experience.html' with experience=experience %}
+        {% endfor %}
     </div>
 </div>

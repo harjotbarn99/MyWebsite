@@ -17,4 +17,10 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         base_context(context)
         context["works"] = Work.objects.all()
+        a = list(Experience.objects.all())
+        a.sort(key=lambda ex:ex.start_date)
+        a.reverse()
+        for i in a:
+            print(i.start_date)
+        context["experiences"] = a
         return context
