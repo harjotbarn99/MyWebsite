@@ -20,7 +20,5 @@ class HomeView(TemplateView):
         a = list(Experience.objects.all())
         a.sort(key=lambda ex:ex.start_date)
         a.reverse()
-        for i in a:
-            print(i.start_date)
         context["experiences"] = a
         return context

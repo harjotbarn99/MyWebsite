@@ -199,6 +199,12 @@ class Experience(models.Model):
     def __str__(self):
         return self.position
 
+    def start_date_MY(self):
+        return self.start_date.strftime("%B %Y")
+
+    def end_date_MY(self):
+        return self.end_date.strftime("%B %Y")
+
     class Meta:
         verbose_name = 'Experience'
         verbose_name_plural = 'Experiences'
