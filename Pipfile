@@ -15,10 +15,11 @@ sqlparse = "==0.3.1"
 Django = "==3.0.8"
 gunicorn = "*"
 pillow = "*"
-psycopg2 = "*"
+psycopg2 = "==2.8.6"
 django-heroku = "*"
 django-storages = "*"
 boto3 = "*"
+dropbox = "*"
 
 [requires]
 python_version = "3.9"
