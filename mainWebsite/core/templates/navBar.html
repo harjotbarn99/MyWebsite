@@ -1,0 +1,32 @@
+{% load static %}
+{% url 'home:home' as url_home%}
+<header>
+  <div class="flex-container align-justify">
+    <div >
+      <a href="{{url_home}}" class="logo"
+        ><img
+          {% if home_page %}
+          src="{{home_page.logo.url}}"
+          {% else %}
+          src="{% static 'img/favicon.ico' %}"
+          {% endif %}
+          class="d-inline-block imgLogo"
+          alt="Logo"
+          loading="lazy"
+      /></a>
+    </div>
+    <div class="nav-components">
+      <div class="menu-toggle"></div>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home:home'%}">Home</a></li>
+          <li><a href="{{url_home|add:'#works'}}">My Works</a></li>
+          <li><a href="{{me.resume_link}}">My Resume</a></li>
+          <li><a href="mailto:{{me.email}}">Contact Me</a></li>
+        </ul>
+      </nav>
+      <dic class="clearfix"></dic>
+    </div>
+  </div>
+  
+</header>

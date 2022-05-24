@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 django-debug-toolbar = "*"
 django-mail-panel = "*"
+autopep8 = "*"
 
 [packages]
 asgiref = "==3.2.10"
@@ -16,6 +17,8 @@ gunicorn = "*"
 pillow = "*"
 psycopg2 = "*"
 django-heroku = "*"
+django-storages = "*"
+boto3 = "*"
 
 [requires]
 python_version = "3.9"
