@@ -1,0 +1,24 @@
+<div class="card work-card col-lg-3 col-md-5">
+    <div class="card-header {{work.category}} work-card-header">        
+        {{work.title}}
+        </div>
+    <img src="{{work.picture.url|safe}}" class="card-img-top work-card-image" alt="{{work.title|add:"'s image"}}">
+    <div class="card-body work-card-body">
+        <div class="card-text work-card-text">
+        {% if work.show_status %}
+        {{ work.status_message }}</br>
+        {% endif %}
+        {{work.description}}
+        {% if work.on_github or work.in_production %}
+        <div class="work_links ">
+        {% if work.in_production%}
+            <a class="btn btn-primary " href="{{work.production_link}}">Website</a>
+        {% endif %}
+        {% if work.on_github %}
+            <a class="btn btn-dark" href="{{work.github_link}}">GitHub</a>
+        {% endif %}
+         </div>
+        {% endif %}
+        </div>
+    </div>
+</div>

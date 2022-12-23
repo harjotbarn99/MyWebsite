@@ -10,14 +10,13 @@ __pycache__
 # SQLITE database file
 db.sqlite3
 
-# User-uploaded files
-media
-
 # JavaScript dependencies
 node_modules
 
 # Built static files
 static/dist
+backgrounds
+work_thumbnails
 
 # Python virtual environment
 venv
@@ -27,3 +26,8 @@ venv
 
 # environment variables
 .env
+
+# my testing directory
+testing
+try
+

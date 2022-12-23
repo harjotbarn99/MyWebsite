@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap and font awsome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/12a43a9cdb.js" crossorigin="anonymous"></script>
+    <!--  -->
+    <title>{% block title %}{{me.name}}'s Website{% endblock title %}</title>
+    {% if home_page %}
+      <link rel="icon" href="{{home_page.logo.url}}" type="image/x-icon">
+      {% else %}
+      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+      {% endif %}
+    
+    <link rel="stylesheet" href="{%static 'css/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    {% block stylesheets %}{% endblock stylesheets%}
+  </head>
+
+  <body>
+  {# header and navbar #}
+      {% block header %}
+        {% include 'navBar.html' %}
+    {% endblock header %}
+  {# Notifications #}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} m-3 p-2">
+            {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {# body #}
+    {% block body %}<h1>default body</h1>{% endblock body %}
+
+    {% include '_social.html' %}
+    {# JS/foundationsites #}
+    {% comment %} <script src="{% static 'js/vendor.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script> {% endcomment %}
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block javascript %}{% endblock javascript%}
+        <script type="text/javascript">
+      $(document).ready(function () {
+        $('.menu-toggle').click(function () {
+          $('.menu-toggle').toggleClass('active');
+          $('nav').toggleClass('active');
+        });
+      });
+    </script>
+  </body>
+</html>

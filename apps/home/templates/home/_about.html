@@ -1,0 +1,15 @@
+{% load static%}
+<div id="about" class="section-fullscreen section-about row ">
+    <style>
+        .section-about{
+            {% if home_page %}
+            background-image: url({{home_page.about_background.url|safe}}) ;
+            {% else %}
+            background-image: url({% static 'img/aerial-sea.jpg' %}) ;
+            {% endif %}
+        }
+        </style>
+    <div class="div-about row justify-content-center">
+        <p> this is about </p>
+    </div>
+</div>
