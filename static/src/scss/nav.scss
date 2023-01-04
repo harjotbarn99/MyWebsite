@@ -1,0 +1,144 @@
+@import 'mixins';
+@import 'variables';
+.side-hang{
+  width: 5rem;
+  height: 5rem;
+}
+.social-toggle{
+ background-color: $background-white;
+}
+$fl-side: 3.5rem;
+.social-link{
+  @include rounded-border;
+  width: $fl-side;
+  height: $fl-side;
+  background-color: $background-white;
+  margin-top: 1rem;
+  padding-left: 50px;
+}
+
+.z100{
+  z-index: 100;
+}
+.icon-margin{
+  margin-top: 0.25rem;
+  margin-left: 0.75rem;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:20');
+
+.imgLogo {
+  min-height: 3rem;
+  width: auto;
+  @include rounded-border;
+  // padding: auto;
+}
+
+header {
+  position: fixed;
+  top: 0.5rem;
+  left: 2.5vw;
+  padding-right: 1rem;
+  z-index: 100;
+  width: 95vw;
+  background: $background-white;
+  box-sizing: border-box;
+  @include rounded-border;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.logo {
+  color: $menu-green;
+  height: 4rem;
+  font-size: 3rem;
+  line-height: 3.7rem;
+  // padding: 10px 10px;
+  padding-left: 0.5rem;
+  /* background: dodgerblue; */
+  text-align: center;
+  box-sizing: border-box;
+  float: left;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+$padding-a-nav: 1rem;
+nav ul li a {
+  display: block;
+  margin: 0.7rem 0.1rem;
+  padding: 0.7rem 0.8rem;
+  text-decoration: none;
+  color: #262626;
+  @include rounded-border;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background: $menu-green;
+  color: #fff;
+  transition: 0.5s;
+}
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin: 0.7rem;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 2.1rem;
+    color: $menu-green;
+  }
+
+  .menu-toggle:before {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    line-height: 2.8rem;
+  }
+  .menu-toggle.active:before {
+    content: '\f00d';
+  }
+  nav {
+    display: none;
+  }
+  nav.active {
+    display: block;
+    width: 100%;
+  }
+
+  nav.active ul {
+    display: block;
+  }
+
+  nav.active ul li a {
+    margin: 0.5rem;
+  }
+
+  .imgLogo {
+    height: 2.1rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+}

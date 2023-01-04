@@ -1,0 +1,18 @@
+<div class="z100">
+    <div class="navbar fixed-bottom navbar-light col-1 mb-2 ms-2">
+        <div class="container-fluid">
+            <button class="navbar-toggler social-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-share-alt-square fa-2x"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            {% for website in social_websites %}
+              <a class="nav-link social-link" href="{{website.link}}">
+                  <i class="{{website.classes}} icon-margin"></i>
+                  </a>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
