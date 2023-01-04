@@ -11,7 +11,7 @@ __pycache__
 db.sqlite3
 
 # User-uploaded files
-media
+# media
 
 # JavaScript dependencies
 node_modules
