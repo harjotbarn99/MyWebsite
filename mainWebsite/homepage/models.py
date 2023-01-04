@@ -186,13 +186,13 @@ class Experience(models.Model):
         RESEARCH = "RS", gl("Research")
         
 
-    company = models.CharField(max_length=50)
-    position = models.CharField(max_length=50)
-    place = models.CharField(max_length=100)
+    company = models.CharField(max_length=250)
+    position = models.CharField(max_length=250)
+    place = models.CharField(max_length=250)
     start_date = models.DateField(auto_now=False)
     active = models.BooleanField(default=False)
     end_date = models.DateField(auto_now=False)
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=5000)
     category = models.CharField(
         max_length=2, choices=TypeOfExperience.choices, default=TypeOfExperience.INTERNSHIP)
 
