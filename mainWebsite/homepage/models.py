@@ -11,9 +11,9 @@ class Work(models.Model):
         PROJECT = "PR", gl("Project")
         CONTRIBUTION = "CB", gl("Contribution")
 
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=250)
     # name is the name giver as slug
-    name = models.CharField(blank=True, max_length=50)
+    name = models.CharField(blank=True, max_length=250)
     category = models.CharField(
         max_length=2, choices=TypeOfWork.choices, default=TypeOfWork.PROJECT)
     description = models.TextField(blank=True)
@@ -47,9 +47,9 @@ class Work(models.Model):
 
 
 class MyIntro(models.Model):
-    greeting_text = models.CharField(max_length=100)
-    name = models.CharField(max_length=50)
-    bio = models.CharField(max_length=200)
+    greeting_text = models.CharField(max_length=250)
+    name = models.CharField(max_length=100)
+    bio = models.CharField(max_length=500)
     major = models.CharField(max_length=50, blank=True)
     minor = models.CharField(max_length=50, blank=True)
     micro_credential = models.CharField(max_length=50, blank=True)
@@ -81,7 +81,7 @@ class MyIntro(models.Model):
 
 
 class SocialWebsite(models.Model):
-    site = models.CharField(max_length=50)
+    site = models.CharField(max_length=100)
     classes = models.TextField()
     link = models.TextField()
 
