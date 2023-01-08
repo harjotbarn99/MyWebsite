@@ -4,6 +4,14 @@ from django.utils.translation import gettext_lazy as gl
 from django.core.files.storage import default_storage
 # Create your models here.
 
+class Message:
+    
+    def __init__(self, m, tags) -> None:
+        self.m = m
+        self.tags = tags
+
+    def __str__(self) -> str:
+        return self.m
 
 class Work(models.Model):
     class TypeOfWork(models.TextChoices):

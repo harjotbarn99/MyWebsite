@@ -12,6 +12,7 @@
         </style>
         <div class="experience-title h2">Work Experience</div>
     <div class="div-experience row justify-content-center">
+        
         {% for experience in experiences %}
            {% include 'homepage/snippets/experience.html' with experience=experience %}
         {% endfor %}

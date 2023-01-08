@@ -1,3 +1,4 @@
+{% load markdownify %}
 <div class="card experience-card col-lg-5 col-md-5 m-2">
     <div class="card-header {% if experience.active %}experience-active{% else %}experience-not-active{% endif %} experience-card-header">        
         {{experience.position}}
@@ -5,7 +6,7 @@
     <div class="card-body experience-card-body">
         <h6 class="card-subtitle experience-card-subtitle mb-2 text-muted">{{experience.start_date_MY}} - {% if experience.active%}Present{% else %}{{experience.end_date_MY}}{% endif %}</h6>
         <div class="card-text experience-card-text">
-        {{experience.description}}
+        {{ experience.description|markdownify }}
         </div>
     </div>
 </div>

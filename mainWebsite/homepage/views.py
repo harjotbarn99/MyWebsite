@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import HomePage, MyIntro, SocialWebsite, Work, Experience
+from .models import HomePage, MyIntro, SocialWebsite, Work, Experience, Message
 
 # Create your views here.
 def base_context(context):
     context["social_websites"] = SocialWebsite.objects.all()
     context["me"] = MyIntro.objects.all().first()
     context["home_page"] = HomePage.objects.all().first()
+    context["messages"] = [Message("This page is not meant to show my UI/UX skills.", "warning")]
     return context
 
 class HomepageView(TemplateView):

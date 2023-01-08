@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # my apps
+    'markdownify.apps.MarkdownifyConfig',
     "core",
     "homepage"
 ]
@@ -124,3 +125,32 @@ MEDIA_ROOT = Path.joinpath(SRC_PATH, "media")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#  markdownify
+MARKDOWNIFY = {
+  "default": {
+        "WHITELIST_TAGS": [
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul'
+        ],
+        "WHITELIST_ATTRS": [
+            'href',
+            'src',
+            'alt',
+        ],
+        # "BLEACH": False,
+        # "STRIP": False
+    }
+
+}

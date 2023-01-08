@@ -28,14 +28,25 @@
       {% block header %}
         {% include 'navBar.html' %}
     {% endblock header %}
-  {# Notifications #}
-    {% if messages %}
+    <div class="messages-disp">
+      {# Notifications #}
+      {% if messages %}
+      <script>
+        function close_message(id){
+          document.getElementById(id).remove();
+        }
+      </script>
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} m-3 p-2">
-            {{ message }}
-        </div>
+            <div class="alert alert-{{ message.tags }} m-3 p-3 pl-5 alert-dismissible fade show" id='{{ message|slugify }}' role="alert">
+                {{ message }}
+                <button type="button" class="btn close" onclick='close_message("{{ message|slugify }}")' data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
         {% endfor %}
       {% endif %}
+      </div>
     {# body #}
     {% block body %}<h1>default body</h1>{% endblock body %}
 
