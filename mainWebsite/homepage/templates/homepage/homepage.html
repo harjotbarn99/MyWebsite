@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<main id="main" class="main-container" class="row">
+    <div id="main-content">
+        {% if home_page %}
+            {% if home_page.intro%}
+                {% include "homepage/_intro.html" %}
+            {% endif %}
+            {% if home_page.work%}
+                {% include "homepage/_works.html" %}
+            {% endif %}
+            {% if home_page.experience%}
+                {% include "homepage/_experience.html" %}
+            {% endif %}
+            {% if home_page.about%}
+                {% include "homepage/_about.html" %}
+            {% endif %}
+        {% else %}
+        {% include "homepage/_intro.html" %}
+        {% include "homepage/_works.html" %}
+        {% include "homepage/_experience.html" %}
+        {% include "homepage/_about.html" %}
+        {% endif %}
+    </div>
+</main>
+  
+{% endblock body %}
+
+{% block stylesheets %}
+  
+{% endblock stylesheets %}

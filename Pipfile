@@ -1,24 +1,18 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.1.5"
+pyyaml = "*"
+pillow = "==9.2.0"
+django-markdownify = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"
-django-mail-panel = "*"
-autopep8 = "*"
-
-[packages]
-asgiref = "==3.2.10"
-pytz = "==2020.1"
-sqlparse = "==0.3.1"
-Django = "==3.0.8"
-gunicorn = "*"
-pillow = "*"
-psycopg2 = "*"
-django-heroku = "*"
-django-storages = "*"
-boto3 = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"

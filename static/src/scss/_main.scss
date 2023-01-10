@@ -5,6 +5,13 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.messages-disp{
+  position: absolute;
+  z-index: 110;
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+
 //              home app
 //   main container
 .main-container {
@@ -70,6 +77,18 @@ body {
   @include flex-justify-align;
   padding-top: 3rem;
   padding-bottom: 2rem;
+
+  .works-title{
+    @include hold-content-centre;
+    padding-left: $experience-title-padding;
+    padding-right: $experience-title-padding;
+    min-height: fit-content;
+    max-width: 95vw;
+    border: none;
+    border-bottom: solid $blackLight ;
+    // margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 
   .div-works {
     margin-top: 1rem;

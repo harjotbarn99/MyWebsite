@@ -9,7 +9,7 @@
     <!-- Bootstrap and font awsome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/12a43a9cdb.js" crossorigin="anonymous"></script>
+     <script src="https://kit.fontawesome.com/6fe31a0e14.js" crossorigin="anonymous"></script>
     <!--  -->
     <title>{% block title %}{{me.name}}'s Website{% endblock title %}</title>
     {% if home_page %}
@@ -28,14 +28,25 @@
       {% block header %}
         {% include 'navBar.html' %}
     {% endblock header %}
-  {# Notifications #}
-    {% if messages %}
+    <div class="messages-disp">
+      {# Notifications #}
+      {% if messages %}
+      <script>
+        function close_message(id){
+          document.getElementById(id).remove();
+        }
+      </script>
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} m-3 p-2">
-            {{ message }}
-        </div>
+            <div class="alert alert-{{ message.tags }} m-3 p-3 pl-5 alert-dismissible fade show" id='{{ message|slugify }}' role="alert">
+                {{ message }}
+                <button type="button" class="btn close" onclick='close_message("{{ message|slugify }}")' data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
         {% endfor %}
       {% endif %}
+      </div>
     {# body #}
     {% block body %}<h1>default body</h1>{% endblock body %}
 

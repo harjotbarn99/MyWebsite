@@ -1,9 +1,9 @@
 {% load static %}
-{% url 'home:home' as url_home%}
+{% url 'homepage:homepage' as url_homepage%}
 <header>
   <div class="flex-container align-justify">
     <div >
-      <a href="{{url_home}}" class="logo"
+      <a href="{{url_homepage}}" class="logo"
         ><img
           {% if home_page %}
           src="{{home_page.logo.url}}"
@@ -19,7 +19,7 @@
       <div class="menu-toggle"></div>
       <nav>
         <ul>
-          <li><a href="{% url 'home:home'%}">Home</a></li>
+          <li><a href="{{ url_homepage }}">Home</a></li>
           <li><a href="{{url_home|add:'#works'}}">My Works</a></li>
           <li><a href="{{me.resume_link}}">My Resume</a></li>
           <li><a href="mailto:{{me.email}}">Contact Me</a></li>
