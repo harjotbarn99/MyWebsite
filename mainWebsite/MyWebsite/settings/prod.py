@@ -9,8 +9,17 @@ SECRET_KEY = CONFIG_YAML["App"]["secret_key"]
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
-# required for staticlally collection file and only those files served by apache or nginx
-STATIC_ROOT = Path.joinpath(SRC_PATH, "staticfiles")
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+

@@ -32,3 +32,5 @@ venv
 trial
 
 config.yaml
+
+staticfiles

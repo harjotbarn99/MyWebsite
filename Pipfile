@@ -8,6 +8,8 @@ django = "==4.1.5"
 pyyaml = "*"
 pillow = "==9.2.0"
 django-markdownify = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"
