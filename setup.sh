@@ -3,8 +3,10 @@
 source ./setupHelp/functions.sh 
 
 printProper "installing node packages"
+# this installs all the node packages required to run the app
 npm install
 printProper "building static packages"
+# this builds the static files like css js and images to server for the app
 gulp build
 
 printProper "setting up python virtual environment"

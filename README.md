@@ -1,41 +1,18 @@
-# Django boiler plate
+# My website
 
-This repo is upto date with Django 4.1.5
+## Before use
+- create the config.yaml file
 
-for any bugs, issues or suggsetions contact me at harjotbarn99@gmail.com
+## Fo Using
+run the `setup.sh` file 
 
-
-## Why use this ?
-- can serve static files 
-- can build scss 
-- can run in dev and production setting setup
-- has custom commad examples and
-  - make super user with the custom command provided (no need to fill in username password and email)
-- has setup configuration variable
-- has debug toobar 
-
-all of this with just a few commands
-
-
-
-## To Use
-- clone or download this project as zip(recommended)
-- run virtual environment (First) `pipenv install --dev`
-- rename the project `python manage.py rename djBoilerplate theBestApp`  =>  `python manage.py rename <current name> <new name>`. 
-- `npm install` to install npm packages
-- `gulp build` to build static files
-- `python manage.py make migrations`
-- `python manage.py makesuper` creates the superuser
-- `python manage.py runserver`
-
-### Before deploying
-- change details in package.json 
-- change all config variables in `config.yaml`
-
-### security 
-if you are going to push you code to github it is recommended to 
-- remove the `config.yaml` file and uncomment it in `.gitignore` . this will prevent putting sensitive info onto github 
-
+## for deployment
+```
+python manage.py migrate
+python manage.py collectstatic
+gunicorn MyWebsite.wsgi 
+```
+you can add `--log-level=debug` flag to gunicorn to enable more info
 
 ## while development
 - debug toolbar is very helpful 
@@ -43,6 +20,7 @@ if you are going to push you code to github it is recommended to
 
 
 ## config
+These are changed for the deployed server
 access variables by 
 ```
 from django.conf import settings
@@ -90,15 +68,12 @@ eg
 ```
 
 
-
-
 # Debug toolbar
 + to hide debug toolbar go to `<projectName>/settings/dev.py` and find the function `show_toolbar` and make it `return False`
 
 
 # Useful info
 - remove the `statc/dist` folder and uncomment it in `.gitignore` . this will not push the built files and saves space
-- remove the `media` folder and uncomment it in `.gitignore`. this folder stores files uploaded by users so no need to push it to git
 - add apps to `<projectName>/settings/base.py` after creating them
 - be careful while naming css and scss files `app.scss` compiles to `app.css` so be careful not to name a css file same as scss
 

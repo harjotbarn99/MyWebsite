@@ -20,7 +20,7 @@ from django.conf import settings
 if settings.DEBUG == False :
         
     from whitenoise import WhiteNoise
-    print("\n src path  -> ", settings.STATIC_ROOT, " and debug = ", settings.DEBUG)
+    # print("\n src path  -> ", settings.STATIC_ROOT, " and debug = ", settings.DEBUG)
     application = WhiteNoise(application, root=settings.STATIC_ROOT)
     application.add_files(settings.STATIC_ROOT, prefix="/static/")
     application.add_files(settings.MEDIA_ROOT, prefix="/media/")
