@@ -1,5 +1,11 @@
 # My website
 
+# Note
+The app has been tested to work with 
+- python 3.10.8
+- node 16.17.1
+if you face any isses with dependencies try updating python and node or using the specified versions
+
 ## Before use
 - create the config.yaml file
 config vars  in `config.yaml` file. you can copt the below code paste it in your file and change the variables
@@ -14,16 +20,22 @@ App:
   debug : false  # if run in debug mode or not
 ```
 
-## Fo Using
+- if you have a db backup put it in `/mainWebsite` as `backup_db.json`
+the `setup.sh` will ask you if it should load the back up or not but you can do it manually too using `python manage.py loaddata backup_db.json`
+
+
+## For Using
 run the `setup.sh` file 
 
-## for deployment
+## For deployment
 ```
 python manage.py migrate
 python manage.py collectstatic
 gunicorn MyWebsite.wsgi 
 ```
-you can add `--log-level=debug` flag to gunicorn to enable more info
+you can add `--log-level=debug` flag to gunicorn to enable more info and `--bind 0.0.0.0:8000` flag to bind the server to specefic ip and port
+
+can also use apache
 
 ## while development
 - debug toolbar is very helpful 
