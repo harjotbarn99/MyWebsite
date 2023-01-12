@@ -27,14 +27,16 @@ from django.conf import settings
 
 username_ = settings.CONFIG_YAML["App"]["var_name"]
 ```
-current config vars 
+current config vars  in `config.yaml` file
+```
 App:
   prod : false  -> determins if the app should startup in production or development
   secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' -> secret key used for production
   superuser_username : "admin" -> the superuser username used by makesuper command
   superuser_password : "admin1233" -> the superuser password used by makesuper command
   superuser_email : "admin@xyzdomain.com" -> the superuser email used by makesuper command
-
+  debug : false  -> if run in debug mode or not
+```
 
 # Custom commands
 These commands are used like normal django commands like `python manage.py <command>  <args>`

@@ -6,7 +6,7 @@ print("\n***********************************************************************
 SECRET_KEY = CONFIG_YAML["App"]["secret_key"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = CONFIG_YAML["App"]["debug"]
 
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
