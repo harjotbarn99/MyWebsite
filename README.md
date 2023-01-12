@@ -2,6 +2,17 @@
 
 ## Before use
 - create the config.yaml file
+config vars  in `config.yaml` file. you can copt the below code paste it in your file and change the variables
+
+```
+App:
+  prod : false  # determins if the app should startup in production or development
+  secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' # secret key used for production
+  superuser_username : "admin" # the superuser username used by makesuper command
+  superuser_password : "admin1233"  # the superuser password used by makesuper command
+  superuser_email : "admin@xyzdomain.com" # the superuser email used by makesuper command
+  debug : false  # if run in debug mode or not
+```
 
 ## Fo Using
 run the `setup.sh` file 
@@ -19,7 +30,7 @@ you can add `--log-level=debug` flag to gunicorn to enable more info
 - `gulp watch` to open up a session where if you make a change in static files the files will be built again and browser will be refersed (only on the url provided when you run `gulp watch`)
 
 
-## config
+## config file
 These are changed for the deployed server
 access variables by 
 ```
@@ -27,16 +38,7 @@ from django.conf import settings
 
 username_ = settings.CONFIG_YAML["App"]["var_name"]
 ```
-current config vars  in `config.yaml` file
-```
-App:
-  prod : false  -> determins if the app should startup in production or development
-  secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' -> secret key used for production
-  superuser_username : "admin" -> the superuser username used by makesuper command
-  superuser_password : "admin1233" -> the superuser password used by makesuper command
-  superuser_email : "admin@xyzdomain.com" -> the superuser email used by makesuper command
-  debug : false  -> if run in debug mode or not
-```
+
 
 # Custom commands
 These commands are used like normal django commands like `python manage.py <command>  <args>`
