@@ -25,7 +25,10 @@ the `setup.sh` will ask you if it should load the back up or not but you can do 
 
 
 ## For Using
-run the `setup.sh` file 
+- run the `setup.sh` file 
+
+### To remember 
+always make sure you are using the python virtual env ot this app otherwise the app might not work.
 
 ## For deployment
 ```
