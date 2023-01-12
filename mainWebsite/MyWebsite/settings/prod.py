@@ -9,8 +9,7 @@ SECRET_KEY = CONFIG_YAML["App"]["secret_key"]
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["127.0.0.1"]
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 DATABASES = {

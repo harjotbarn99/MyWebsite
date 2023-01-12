@@ -21,6 +21,7 @@ static/dist
 
 # Python virtual environment
 venv
+websiteVenv
 
 # vscode
 .vscode/
@@ -34,3 +35,7 @@ trial
 config.yaml
 
 staticfiles
+
+.DS_Store
+
+backup_db.json
