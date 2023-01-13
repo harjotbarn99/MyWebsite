@@ -12,12 +12,14 @@ config vars  in `config.yaml` file. you can copt the below code paste it in your
 
 ```
 App:
-  prod : false  # determins if the app should startup in production or development
+  prod : false        # determins if the app should startup in production or development
   secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' # secret key used for production
-  superuser_username : "admin" # the superuser username used by makesuper command
-  superuser_password : "admin1233"  # the superuser password used by makesuper command
-  superuser_email : "admin@xyzdomain.com" # the superuser email used by makesuper command
-  debug : false  # if run in debug mode or not
+  superuser_username : "admin"      # the superuser username used by makesuper command
+  superuser_password : "admin1233"       # the superuser password used by makesuper command
+  superuser_email : "admin@xyzdomain.com"       # the superuser email used by makesuper command
+  debug : false        # if run in debug mode or not
+  allowed_hosts_dev : ["127.0.0.1"]         # hosts allowed for development by django
+  allowed_hosts_prod : ["127.0.0.1"]          # hosts allowed for production by django
 ```
 
 - if you have a db backup put it in `/mainWebsite` as `backup_db.json`

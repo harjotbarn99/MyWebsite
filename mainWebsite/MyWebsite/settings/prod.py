@@ -9,8 +9,7 @@ SECRET_KEY = CONFIG_YAML["App"]["secret_key"]
 DEBUG = CONFIG_YAML["App"]["debug"]
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-
+ALLOWED_HOSTS = CONFIG_YAML["App"]["allowed_hosts_prod"]
 
 DATABASES = {
     'default': {
