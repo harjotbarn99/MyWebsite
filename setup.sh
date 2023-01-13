@@ -2,7 +2,11 @@
 
 source ./setupHelp/functions.sh 
 
-printProper "checking for `config.yaml` file"
+# TODO :
+# add checks for python, node, npm and gulp-cli 
+
+
+printProper "checking for config.yaml file"
 FILE=./config.yaml
 if ! test -f "$FILE"; then
     echo
