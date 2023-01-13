@@ -2,6 +2,15 @@
 
 source ./setupHelp/functions.sh 
 
+printProper "checking for `config.yaml` file"
+FILE=./config.yaml
+if ! test -f "$FILE"; then
+    echo
+    echo "$FILE does not exist"
+    echo "please create one with all required variables. Program is exiting !"
+    exit
+fi
+
 printProper "installing node packages"
 # this installs all the node packages required to run the app
 npm install
@@ -21,15 +30,6 @@ else
 fi
 
 
-printProper "checking for `config.yaml` file"
-FILE=./config.yaml
-if ! test -f "$FILE"; then
-    echo
-    echo "$FILE does not exist"
-    echo "please create one with all required variables. Program is exiting !"
-    exit
-fi
-
 printProper "setting up django website " 
 cd mainWebsite
 python manage.py migrate
@@ -42,6 +42,9 @@ if test -f "$FILE"; then
     if [ "$key_input" == "y" ] ; then
         python manage.py loaddata backup_db.json
     fi
+else
+    printProper "no db backup file found !!!!"
+    echo "check name and location of file if it being used"
 fi
 
 echo 

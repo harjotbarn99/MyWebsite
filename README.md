@@ -1,25 +1,51 @@
 # My website
 
+# Note
+The app has been tested to work with 
+- python 3.10.8
+- node 16.17.1
+if you face any isses with dependencies try updating python and node or using the specified versions
+
 ## Before use
 - create the config.yaml file
+config vars  in `config.yaml` file. you can copt the below code paste it in your file and change the variables
 
-## Fo Using
-run the `setup.sh` file 
+```
+App:
+  prod : false  # determins if the app should startup in production or development
+  secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' # secret key used for production
+  superuser_username : "admin" # the superuser username used by makesuper command
+  superuser_password : "admin1233"  # the superuser password used by makesuper command
+  superuser_email : "admin@xyzdomain.com" # the superuser email used by makesuper command
+  debug : false  # if run in debug mode or not
+```
 
-## for deployment
+- if you have a db backup put it in `/mainWebsite` as `backup_db.json`
+the `setup.sh` will ask you if it should load the back up or not but you can do it manually too using `python manage.py loaddata backup_db.json`
+
+
+## For Using
+- run the `setup.sh` file 
+
+### To remember 
+always make sure you are using the python virtual env ot this app otherwise the app might not work.
+
+## For deployment
 ```
 python manage.py migrate
 python manage.py collectstatic
 gunicorn MyWebsite.wsgi 
 ```
-you can add `--log-level=debug` flag to gunicorn to enable more info
+you can add `--log-level=debug` flag to gunicorn to enable more info and `--bind 0.0.0.0:8000` flag to bind the server to specefic ip and port
+
+can also use apache
 
 ## while development
 - debug toolbar is very helpful 
 - `gulp watch` to open up a session where if you make a change in static files the files will be built again and browser will be refersed (only on the url provided when you run `gulp watch`)
 
 
-## config
+## config file
 These are changed for the deployed server
 access variables by 
 ```
@@ -27,13 +53,6 @@ from django.conf import settings
 
 username_ = settings.CONFIG_YAML["App"]["var_name"]
 ```
-current config vars 
-App:
-  prod : false  -> determins if the app should startup in production or development
-  secret_key : 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un-modified for prod' -> secret key used for production
-  superuser_username : "admin" -> the superuser username used by makesuper command
-  superuser_password : "admin1233" -> the superuser password used by makesuper command
-  superuser_email : "admin@xyzdomain.com" -> the superuser email used by makesuper command
 
 
 # Custom commands
