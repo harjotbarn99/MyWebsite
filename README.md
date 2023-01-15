@@ -1,9 +1,21 @@
 # My website
 
+# Deployed info
+the website is deployed at http://172.104.12.50/ .
+to see how the website is dynamic 
+- go to http://172.104.12.50/admin 
+- use `viewer` and `password1@` to access to admin panel
+you will only have read access while I can modify the fields in admin panel to change the website and it requires no coding skills
+
 # Note
+If anyone would like to work on the frontend of this website, please contact me at harjotbarn99@gmail.com
 The app has been tested to work with 
-- python 3.10.8
-- node 16.17.1
+- python 
+  - 3.10.8
+  - 3.8
+- node 
+  - 16.17.1 
+  - 19.4.0
 if you face any isses with dependencies try updating python and node or using the specified versions
 
 ## Before use
@@ -33,14 +45,8 @@ the `setup.sh` will ask you if it should load the back up or not but you can do 
 always make sure you are using the python virtual env ot this app otherwise the app might not work.
 
 ## For deployment
-```
-python manage.py migrate
-python manage.py collectstatic
-gunicorn MyWebsite.wsgi 
-```
-you can add `--log-level=debug` flag to gunicorn to enable more info and `--bind 0.0.0.0:8000` flag to bind the server to specefic ip and port
-
-can also use apache
+go to https://techtutorguro.com/how-to-install-django-3-2-lts-on-ubuntu-20-04/
+if you face any issues while visiting the deployed app (you get error 500) then turn debug on and try again to see more info which  an help you figure out the issues
 
 ## while development
 - debug toolbar is very helpful 
@@ -90,12 +96,12 @@ eg
 
 
 # Debug toolbar
-+ to hide debug toolbar go to `<projectName>/settings/dev.py` and find the function `show_toolbar` and make it `return False`
++ to hide debug toolbar go to `<projectName>/settings/__init__.py` and find the function `show_toolbar` and make it `return False`
 
 
 # Useful info
 - remove the `statc/dist` folder and uncomment it in `.gitignore` . this will not push the built files and saves space
-- add apps to `<projectName>/settings/base.py` after creating them
+- add apps to `<projectName>/settings/__init__.py` after creating them
 - be careful while naming css and scss files `app.scss` compiles to `app.css` so be careful not to name a css file same as scss
 
 
