@@ -3,7 +3,7 @@
 # Deployed info
 the website is deployed at http://172.104.12.50/ .
 to see how the website is dynamic 
-- go to http://172.10""4.12.50/admin 
+- go to http://172.104.12.50/admin 
 - use `viewer` and `password1@` to access to admin panel
 you will only have read access while I can modify the fields in admin panel to change the website and it requires no coding skills
 
