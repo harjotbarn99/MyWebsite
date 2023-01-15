@@ -8,7 +8,8 @@ const browserSync = require('browser-sync');
 const fs = require('fs');
 
 
-const _STATIC = path.resolve('static');
+const _STATIC = path.resolve('mainWebsite', 'static');
+console.log(_STATIC);
 const PATHS = {
     src: {
       base: path.join(_STATIC, 'src'),

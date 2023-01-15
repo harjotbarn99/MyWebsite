@@ -15,12 +15,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyWebsite.settings')
 
 application = get_wsgi_application()
 
-from django.conf import settings
+# from django.conf import settings
 
-if settings.DEBUG == False :
+# if settings.PROD == True :
         
-    from whitenoise import WhiteNoise
-    # print("\n src path  -> ", settings.STATIC_ROOT, " and debug = ", settings.DEBUG)
-    application = WhiteNoise(application, root=settings.STATIC_ROOT)
-    application.add_files(settings.STATIC_ROOT, prefix="/static/")
-    application.add_files(settings.MEDIA_ROOT, prefix="/media/")
+#     from whitenoise import WhiteNoise
+#     # print("\n src path  -> ", settings.STATIC_ROOT, " and debug = ", settings.DEBUG)
+#     application = WhiteNoise(application, root=settings.STATIC_ROOT)
+#     application.add_files(settings.STATIC_ROOT, prefix="/static/")
+#     application.add_files(settings.MEDIA_ROOT, prefix="/media/")

@@ -16,13 +16,14 @@ import yaml
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SRC_PATH = Path(__file__).resolve().parent.parent.parent.parent
-
 # configuration 
 CONFIG_YAML = None
-with open(Path.joinpath(SRC_PATH, "config.yaml")) as f:
+with open(Path.joinpath(BASE_DIR, "config.yaml")) as f:
     CONFIG_YAML = yaml.safe_load(f)
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = CONFIG_YAML["App"]["debug"]
+PROD = CONFIG_YAML["App"]["prod"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -48,8 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,13 +116,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [Path.joinpath(
-    SRC_PATH, "static", "dist")]
+    BASE_DIR, "static", "dist")]
 # required for staticlally collection file and only those files served by apache or nginx
-STATIC_ROOT = Path.joinpath(SRC_PATH, "staticfiles")
+STATIC_ROOT = Path.joinpath(BASE_DIR, "staticfiles")
 
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = Path.joinpath(SRC_PATH, "media")
+MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
 
 
 

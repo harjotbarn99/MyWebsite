@@ -6,9 +6,6 @@ print("\n***********************************************************************
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-fhjg$b5@3%$_6viw@x^fca4=s!4xm+z5(#nh=*(8h^l*44t)un'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = CONFIG_YAML["App"]["debug"]
-
 
 ALLOWED_HOSTS = CONFIG_YAML["App"]["allowed_hosts_dev"]
 

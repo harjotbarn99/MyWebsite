@@ -5,9 +5,6 @@ print("\n***********************************************************************
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = CONFIG_YAML["App"]["secret_key"]
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = CONFIG_YAML["App"]["debug"]
-
 
 ALLOWED_HOSTS = CONFIG_YAML["App"]["allowed_hosts_prod"]
 
@@ -18,6 +15,6 @@ DATABASES = {
     }
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 

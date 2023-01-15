@@ -7,7 +7,7 @@ source ./setupHelp/functions.sh
 
 
 printProper "checking for config.yaml file"
-FILE=./config.yaml
+FILE=./mainWebsite/config.yaml
 if ! test -f "$FILE"; then
     echo
     echo "$FILE does not exist"
