@@ -6,14 +6,7 @@ source ./setupHelp/functions.sh
 # add checks for python, node, npm and gulp-cli 
 
 
-printProper "checking for config.yaml file"
-FILE=./mainWebsite/config.yaml
-if ! test -f "$FILE"; then
-    echo
-    echo "$FILE does not exist"
-    echo "please create one with all required variables. Program is exiting !"
-    exit
-fi
+
 
 printProper "installing node packages"
 # this installs all the node packages required to run the app
@@ -23,6 +16,16 @@ printProper "building static packages"
 gulp build
 
 cd mainWebsite
+
+printProper "checking for config.yaml file"
+FILE=./config.yaml
+if ! test -f "$FILE"; then
+    echo
+    echo "$FILE does not exist"
+    echo "please create one with all required variables. "
+    nano ./config.yaml
+    echo "$FILE created."
+fi
 
 printProper "setting up python virtual environment"
 FILE=./websiteVenv/bin/activate
@@ -42,6 +45,11 @@ echo "creating super user"
 python manage.py makesuper
 
 FILE=./backup_db.json
+
+if ! test -f "$FILE"; then
+    nano ./backup_db.json
+fi
+
 if test -f "$FILE"; then
     read -n1 -p "press y to populate data from backup_db.json : " key_input
     if [ "$key_input" == "y" ] ; then
