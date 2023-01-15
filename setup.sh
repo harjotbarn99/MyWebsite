@@ -22,12 +22,14 @@ printProper "building static packages"
 # this builds the static files like css js and images to server for the app
 gulp build
 
+cd mainWebsite
+
 printProper "setting up python virtual environment"
 FILE=./websiteVenv/bin/activate
 if ! test -f "$FILE"; then
     python3 -m venv websiteVenv
     source websiteVenv/bin/activate
-    pip install -r requirements.txt
+    pip install -r ../requirements.txt
 else 
     echo "already setup"
     source websiteVenv/bin/activate
@@ -35,7 +37,6 @@ fi
 
 
 printProper "setting up django website " 
-cd mainWebsite
 python manage.py migrate
 echo "creating super user"
 python manage.py makesuper
