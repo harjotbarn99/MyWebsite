@@ -24,10 +24,11 @@ urlpatterns = [
     path("", include("homepage.urls")),
 ]
 
-
-if settings.DEBUG:
+if not settings.PROD:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
 
     import debug_toolbar
 
